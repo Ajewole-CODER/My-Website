@@ -1,3 +1,14 @@
+ const hamburger = document.getElementById('hamburger-menu');
+    const navUl = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => {
+        navUl.classList.toggle('show');
+    });
+    
+    navUl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navUl.classList.remove('show');
+        });
+    });
 document.addEventListener('DOMContentLoaded', (event) => {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const dropdownMenu = document.getElementById('dropdown-menu');
