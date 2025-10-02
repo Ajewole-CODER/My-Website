@@ -7,6 +7,37 @@ body {
     line-height: 1.6;
 }
 
+/* Text shadow for readability over background images */
+h1, h2, p, a, label, button {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Background slideshow */
+.background-slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 1;
+}
+
 /* Light mode styles */
 body.light-mode {
     background-color: #ffffff;
@@ -70,6 +101,20 @@ section {
     height: fit-content;
     margin: 0 auto;
 }
+
+/* Profile picture styles */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 4px solid #333;
+}
+
+
 
 /* Footer styles */
 footer {

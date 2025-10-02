@@ -6,7 +6,7 @@ const navUl = document.querySelector('nav ul');
 
 hamburger.addEventListener('click', () => {
     const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', !isExpanded);
+    hamburger.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
     navUl.classList.toggle('show');
 });
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle dropdown menu visibility on button click
     themeToggleBtn.addEventListener('click', () => {
         const expanded = themeToggleBtn.getAttribute('aria-expanded') === 'true';
-        themeToggleBtn.setAttribute('aria-expanded', !expanded);
+        themeToggleBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
         dropdownMenu.style.display = expanded ? 'none' : 'block';
     });
 
@@ -72,4 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
             themeToggleBtn.setAttribute('aria-expanded', 'false');
         }
     });
+
+    // Background slideshow logic
+    const bgSlides = document.querySelectorAll('.background-slideshow .bg-slide');
+    let currentBgSlide = 0;
+
+    function showBgSlide(index) {
+        bgSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextBgSlide() {
+        currentBgSlide = (currentBgSlide + 1) % bgSlides.length;
+        showBgSlide(currentBgSlide);
+    }
+
+    if (bgSlides.length > 1) {
+        setInterval(nextBgSlide, 5000); // Change background slide every 5 seconds
+    }
 });
