@@ -1,10 +1,10 @@
-- [x] Restructure projects section in index.html to use card divs
-- [x] Add CSS styles for project cards in toggle.css
-- [x] Add images to project cards
-- [x] Add profile picture to home section in index.html and style it in toggle.css
-- [x] Fix aria-expanded attribute handling in toggle.js for accessibility
-- [x] Improve theme dropdown toggle logic in toggle.js
-- [x] Remove empty Threads social link from footer in index.html
-- [x] Add static profile picture to home section in index.html and style it in toggle.css
-- [x] Add full-screen background image slider to the entire website in index.html, style in toggle.css, and logic in toggle.js
-- [ ] Test the layout in browser
+- [x] Fix name and profession consistency in index.html (use Lemuel Ajewole as Web Developer)
+- [x] Add theme toggle button in header
+- [x] Complete portfolio section with sample projects
+- [x] Add services section
+- [x] Add contact section
+- [x] Add footer
+- [x] Add scroll to top button
+- [x] Remove unused React scripts
+- [x] Fix mobile nav toggle selector in toggle.js
+- [x] Update placeholder content with relevant info

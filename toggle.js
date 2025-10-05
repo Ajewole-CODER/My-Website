@@ -1,94 +1,66 @@
-/**
- * Toggle the visibility of the navigation menu on hamburger click
- */
-const hamburger = document.getElementById('hamburger-menu');
-const navUl = document.querySelector('nav ul');
+// ===== Active nav link on scroll =====
+const sections = document.querySelectorAll("section");
+const navLi = document.querySelectorAll("nav ul li");
 
-hamburger.addEventListener('click', () => {
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-    navUl.classList.toggle('show');
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollY >= sectionTop - 70) current = section.getAttribute("id");
+  });
+
+  navLi.forEach(li => {
+    li.classList.remove("active");
+    if (li.querySelector("a").getAttribute("href").includes(current)) {
+      li.classList.add("active");
+    }
+  });
 });
 
-// Close the navigation menu when any link is clicked
-navUl.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-        navUl.classList.remove('show');
-        hamburger.setAttribute('aria-expanded', 'false');
-    });
+// ===== Reveal animations on scroll =====
+const revealElements = document.querySelectorAll("[data-animate]");
+const revealOnScroll = () => {
+  const trigger = window.innerHeight / 1.2;
+  revealElements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) el.classList.add("visible");
+  });
+};
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+// ===== Mobile menu toggle =====
+const menuToggle = document.querySelector(".mobile-nav-toggle");
+const navbar = document.getElementById("navbar");
+menuToggle.addEventListener("click", () => {
+  navbar.classList.toggle("show");
 });
 
-/**
- * Theme switching logic
- */
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const dropdownMenu = document.getElementById('dropdown-menu');
-    const links = dropdownMenu.querySelectorAll('a');
-    const currentTheme = localStorage.getItem('theme');
+// ===== Light/Dark Mode Toggle =====
+const themeToggle = document.getElementById("theme-toggle");
+const body = document.body;
 
-    // Apply saved theme or system preference
-    if (currentTheme) {
-        document.body.classList.add(currentTheme + '-mode');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-    }
+themeToggle.addEventListener("click", () => {
+  body.classList.toggle("light");
+  localStorage.setItem("theme", body.classList.contains("light") ? "light" : "dark");
+});
 
-    // Toggle dropdown menu visibility on button click
-    themeToggleBtn.addEventListener('click', () => {
-        const expanded = themeToggleBtn.getAttribute('aria-expanded') === 'true';
-        themeToggleBtn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        dropdownMenu.style.display = expanded ? 'none' : 'block';
-    });
+window.addEventListener("load", () => {
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") body.classList.add("light");
+});
 
-    // Handle theme selection from dropdown
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            document.body.classList.remove('light-mode', 'dark-mode');
+// ===== Scroll to Top Button =====
+const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-            const theme = link.getAttribute('data-theme');
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    scrollTopBtn.classList.add("show");
+  } else {
+    scrollTopBtn.classList.remove("show");
+  }
+});
 
-            if (theme === 'system') {
-                localStorage.removeItem('theme');
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.body.classList.add('dark-mode');
-                }
-            } else {
-                document.body.classList.add(theme + '-mode');
-                localStorage.setItem('theme', theme);
-            }
-
-            // Close dropdown after selection
-            dropdownMenu.style.display = 'none';
-            themeToggleBtn.setAttribute('aria-expanded', 'false');
-        });
-    });
-
-    // Close dropdown if clicking outside
-    document.addEventListener('click', (event) => {
-        if (!themeToggleBtn.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-            themeToggleBtn.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    // Background slideshow logic
-    const bgSlides = document.querySelectorAll('.background-slideshow .bg-slide');
-    let currentBgSlide = 0;
-
-    function showBgSlide(index) {
-        bgSlides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
-    }
-
-    function nextBgSlide() {
-        currentBgSlide = (currentBgSlide + 1) % bgSlides.length;
-        showBgSlide(currentBgSlide);
-    }
-
-    if (bgSlides.length > 1) {
-        setInterval(nextBgSlide, 5000); // Change background slide every 5 seconds
-    }
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
