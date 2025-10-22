@@ -1,10 +1,12 @@
-- [x] Fix name and profession consistency in index.html (use Lemuel Ajewole as Web Developer)
-- [x] Add theme toggle button in header
-- [x] Complete portfolio section with sample projects
-- [x] Add services section
-- [x] Add contact section
-- [x] Add footer
-- [x] Add scroll to top button
-- [x] Remove unused React scripts
-- [x] Fix mobile nav toggle selector in toggle.js
-- [x] Update placeholder content with relevant info
+- [x] Remove resume section completely (completed)
+- [ ] Replace Lorem ipsum in About section with real bio
+- [ ] Update personal details in About section (age, degree, etc.)
+- [ ] Fix GitHub social link (missing colon in URL)
+- [ ] Consolidate contact emails to primary one
+- [ ] Update portfolio images and descriptions
+- [ ] Improve skills section with more relevant skills
+- [ ] Test the HTML file in browser
+- [ ] Clean up duplicate files in TOGGLE folder
+- [ ] Update toggle.py with real DB credentials or remove if not needed
+- [ ] Fix inconsistency between toggle.py (MySQL) and toggle.sql (SQL Server)
+- [ ] Add more entries to .gitignore (e.g., .env, logs)
