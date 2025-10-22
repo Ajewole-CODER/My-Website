@@ -588,3 +588,127 @@
     .mobile-nav-toggle {
       display: none;
     }
+
+    /* Additional Responsive Styles */
+    @media (max-width: 991px) {
+      #hero h1 {
+        font-size: 48px;
+        line-height: 48px;
+      }
+
+      #hero p {
+        font-size: 20px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+      }
+
+      .about .content h3 {
+        font-size: 22px;
+      }
+
+      .portfolio .portfolio-wrap img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 36px;
+        line-height: 40px;
+      }
+
+      #hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+      }
+
+      .section-title h2 {
+        font-size: 24px;
+      }
+
+      .about .content h3 {
+        font-size: 20px;
+      }
+
+      .skills .progress {
+        height: 50px;
+      }
+
+      .portfolio .portfolio-wrap img {
+        height: 180px;
+      }
+
+      .services .icon-box {
+        text-align: center;
+      }
+
+      .services .icon {
+        float: none;
+        margin: 0 auto 15px auto;
+      }
+
+      .services .title {
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+
+      .services .description {
+        margin-left: 0;
+      }
+
+      .contact .info h4 {
+        padding: 0;
+        font-size: 18px;
+      }
+
+      .contact .info p {
+        padding: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      #hero h1 {
+        font-size: 28px;
+        line-height: 32px;
+      }
+
+      #hero p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .section-title h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+      }
+
+      .about .content h3 {
+        font-size: 18px;
+      }
+
+      .skills .progress .skill {
+        font-size: 14px;
+      }
+
+      .portfolio .portfolio-wrap img {
+        height: 150px;
+      }
+
+      .services .icon-box {
+        padding: 20px;
+      }
+
+      .contact .info {
+        padding: 20px;
+      }
+
+      .contact .php-email-form {
+        padding: 20px;
+      }
+    }
